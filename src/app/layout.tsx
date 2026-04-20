@@ -51,10 +51,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable}>
-      <body className="min-h-screen flex flex-col">
+    <html lang="en" className={inter.variable} suppressHydrationWarning>
+      <body className="min-h-screen flex flex-col" suppressHydrationWarning>
         <Navbar />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 relative z-10">{children}</main>
         <Footer />
       </body>
     </html>

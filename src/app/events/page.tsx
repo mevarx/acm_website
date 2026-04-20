@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import type { Metadata } from "next";
 import SectionHeading from "@/components/ui/SectionHeading";
 import EventCard from "@/components/ui/EventCard";
 import { events, type EventStatus } from "@/data/events";

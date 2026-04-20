@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, Clock, Calendar, Tag } from "lucide-react";
+import { ArrowLeft, Clock, Calendar } from "lucide-react";
 import { blogPosts } from "@/data/blog";
 import type { Metadata } from "next";
 

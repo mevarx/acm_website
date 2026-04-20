@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Clock, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import type { BlogPost } from "@/data/blog";
+import BorderGlow from "@/components/ui/BorderGlow";
 
 interface BlogCardProps {
   post: BlogPost;
@@ -26,10 +27,11 @@ export default function BlogCard({ post, index = 0 }: BlogCardProps) {
       viewport={{ once: true, margin: "-30px" }}
       transition={{ duration: 0.4, delay: index * 0.1 }}
     >
-      <Link
-        href={`/blog/${post.slug}`}
-        className="block bg-white rounded-xl border border-border hover:border-acm-blue/30 overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-acm-blue/5 group h-full"
-      >
+      <BorderGlow borderRadius={12}>
+        <Link
+          href={`/blog/${post.slug}`}
+          className="block group h-full"
+        >
         {/* Cover color band */}
         <div
           className="h-36 sm:h-40 flex items-center justify-center"
@@ -80,7 +82,8 @@ export default function BlogCard({ post, index = 0 }: BlogCardProps) {
             Read More <ArrowRight size={14} />
           </span>
         </div>
-      </Link>
+        </Link>
+      </BorderGlow>
     </motion.div>
   );
 }

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import type { TeamMember } from "@/data/team";
+import BorderGlow from "@/components/ui/BorderGlow";
 
 const LinkedinIcon = ({ size = 15 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -24,10 +25,10 @@ export default function TeamCard({ member, index = 0, featured = false }: TeamCa
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.1 }}
-      className={`bg-white rounded-xl border border-border overflow-hidden hover:shadow-lg hover:shadow-acm-blue/5 transition-all duration-300 ${
-        featured ? "max-w-sm" : "max-w-xs"
-      } w-full`}
+      className={featured ? "max-w-sm" : "max-w-xs"}
+      style={{ width: '100%' }}
     >
+      <BorderGlow borderRadius={12} animated={featured}>
       {/* Blue top border accent */}
       <div className="h-1.5 bg-gradient-to-r from-acm-blue to-acm-blue-light" />
 
@@ -72,6 +73,7 @@ export default function TeamCard({ member, index = 0, featured = false }: TeamCa
           LinkedIn
         </a>
       </div>
+      </BorderGlow>
     </motion.div>
   );
 }

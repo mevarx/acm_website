@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Calendar, MapPin, ExternalLink, ArrowRight } from "lucide-react";
 import type { Event } from "@/data/events";
+import BorderGlow from "@/components/ui/BorderGlow";
 
 const statusColors = {
   upcoming: { bg: "bg-acm-blue/10", text: "text-acm-blue", dot: "bg-acm-blue" },
@@ -25,12 +26,12 @@ export default function EventCard({ event, index = 0, compact = false }: EventCa
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.4, delay: index * 0.1 }}
-      className="bg-white rounded-xl border border-border hover:border-acm-blue/30 transition-all duration-300 hover:shadow-lg hover:shadow-acm-blue/5 group overflow-hidden"
     >
-      {/* Blue top accent */}
-      <div className="h-1 bg-gradient-to-r from-acm-blue to-acm-blue-light" />
+      <BorderGlow borderRadius={12} animated={index === 0}>
+        {/* Blue top accent */}
+        <div className="h-1 bg-gradient-to-r from-acm-blue to-acm-blue-light" />
 
-      <div className="p-5 sm:p-6">
+        <div className="p-5 sm:p-6">
         {/* Status + Date row */}
         <div className="flex items-center justify-between mb-3">
           <span
@@ -139,7 +140,8 @@ export default function EventCard({ event, index = 0, compact = false }: EventCa
             </a>
           )}
         </div>
-      </div>
+        </div>
+      </BorderGlow>
     </motion.div>
   );
 }

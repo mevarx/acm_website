@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
@@ -17,6 +16,8 @@ import EventCard from "@/components/ui/EventCard";
 import BlogCard from "@/components/ui/BlogCard";
 import TestimonialCard from "@/components/ui/TestimonialCard";
 import JoinBanner from "@/components/ui/JoinBanner";
+import TextType from "@/components/ui/TextType";
+import HeroTerminal from "@/components/ui/HeroTerminal";
 import { events } from "@/data/events";
 import { blogPosts } from "@/data/blog";
 import { testimonials } from "@/data/testimonials";
@@ -82,9 +83,17 @@ export default function HomePage() {
                 ACM Student Chapter
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-dark-text tracking-tight leading-[1.1]">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-dark-text tracking-tight leading-[1.1] min-h-[3em]">
                 Accelerating{" "}
-                <span className="text-acm-blue">INNOVATION</span>
+                <TextType
+                  as="span"
+                  text={["INNOVATION", "EXCELLENCE", "COMMUNITY", "LEADERSHIP"]}
+                  typingSpeed={75}
+                  deletingSpeed={40}
+                  pauseDuration={2000}
+                  className="text-acm-blue"
+                  cursorClassName="text-acm-blue"
+                />
                 <br />
                 in Computing
               </h1>
@@ -112,25 +121,12 @@ export default function HomePage() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="flex-shrink-0"
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.3 }}
+              className="flex-shrink-0 w-full lg:w-auto"
             >
-              <div className="relative w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80">
-                <div className="absolute inset-0 bg-acm-blue/5 rounded-full" />
-                <div className="absolute inset-4 bg-acm-blue/5 rounded-full" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <Image
-                    src="/acm-logo.png"
-                    alt="ACM Logo"
-                    width={200}
-                    height={200}
-                    className="w-28 h-28 sm:w-36 sm:h-36 lg:w-48 lg:h-48 object-contain"
-                    priority
-                  />
-                </div>
-              </div>
+              <HeroTerminal />
             </motion.div>
           </div>
         </div>
