@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, CSSProperties } from 'react';
+import { CSSProperties } from 'react';
 import './ReflectiveCard.css';
 import { Award } from 'lucide-react';
 import type { TeamMember, FacultySponsor } from '@/data/team';
@@ -20,13 +20,11 @@ interface ReflectiveCardProps {
   member: TeamMember;
   featured?: boolean;
   index?: number;
-  blurStrength?: number;
   metalness?: number;
   roughness?: number;
   displacementStrength?: number;
   noiseScale?: number;
   specularConstant?: number;
-  grayscale?: number;
   glassDistortion?: number;
 }
 
@@ -68,51 +66,21 @@ function SvgFilters({
   );
 }
 
-function WebcamVideo({ filterId, saturation, blurStrength }: { filterId: string; saturation: number; blurStrength: number }) {
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    let stream: MediaStream | null = null;
-    const start = async () => {
-      try {
-        stream = await navigator.mediaDevices.getUserMedia({
-          video: { width: { ideal: 640 }, height: { ideal: 480 }, facingMode: 'user' },
-        });
-        if (videoRef.current) videoRef.current.srcObject = stream;
-      } catch { /* fallback gradient via CSS */ }
-    };
-    start();
-    return () => { if (stream) stream.getTracks().forEach(t => t.stop()); };
-  }, []);
-
-  return (
-    <video
-      ref={videoRef}
-      autoPlay
-      playsInline
-      muted
-      className="reflective-video"
-      style={{ filter: `saturate(${saturation}) contrast(120%) brightness(110%) blur(${blurStrength}px) url(#${filterId})` }}
-    />
-  );
-}
+// Webcam removed — CSS gradient fallback renders the metallic effect natively.
 
 const ReflectiveCard = ({
   member,
   featured = false,
   index = 0,
-  blurStrength = 12,
   metalness = 1,
   roughness = 0.3,
   displacementStrength = 18,
   noiseScale = 1.2,
   specularConstant = 4.8,
-  grayscale = 0.6,
   glassDistortion = 12,
 }: ReflectiveCardProps) => {
   const filterId = `metallic-${member.initials.toLowerCase()}`;
   const baseFrequency = 0.03 / Math.max(0.1, noiseScale);
-  const saturation = 1 - Math.max(0, Math.min(1, grayscale));
 
   const style = {
     '--metalness': metalness,
@@ -137,8 +105,6 @@ const ReflectiveCard = ({
           specularConstant={specularConstant}
           glassDistortion={glassDistortion}
         />
-        <WebcamVideo filterId={filterId} saturation={saturation} blurStrength={blurStrength} />
-
         <div className="reflective-noise" />
         <div className="reflective-sheen" />
         <div className="reflective-border" />
@@ -190,31 +156,26 @@ const ReflectiveCard = ({
 interface FacultyReflectiveCardProps {
   sponsor: FacultySponsor;
   index?: number;
-  blurStrength?: number;
   metalness?: number;
   roughness?: number;
   displacementStrength?: number;
   noiseScale?: number;
   specularConstant?: number;
-  grayscale?: number;
   glassDistortion?: number;
 }
 
 export function FacultyReflectiveCard({
   sponsor,
   index = 0,
-  blurStrength = 10,
   metalness = 0.7,
   roughness = 0.25,
   displacementStrength = 14,
   noiseScale = 1.0,
   specularConstant = 3.5,
-  grayscale = 0.5,
   glassDistortion = 10,
 }: FacultyReflectiveCardProps) {
   const filterId = `metallic-faculty-${sponsor.initials.toLowerCase()}`;
   const baseFrequency = 0.03 / Math.max(0.1, noiseScale);
-  const saturation = 1 - Math.max(0, Math.min(1, grayscale));
 
   const style = {
     '--metalness': metalness,
@@ -239,8 +200,6 @@ export function FacultyReflectiveCard({
           specularConstant={specularConstant}
           glassDistortion={glassDistortion}
         />
-        <WebcamVideo filterId={filterId} saturation={saturation} blurStrength={blurStrength} />
-
         <div className="reflective-noise" />
         <div className="reflective-sheen" />
         <div className="reflective-border" />
