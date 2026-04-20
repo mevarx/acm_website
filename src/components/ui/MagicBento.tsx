@@ -499,6 +499,7 @@ const MagicBento = ({
         {React.Children.map(children, (child, index) => {
           if (!React.isValidElement(child)) return child;
 
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const typedChild = child as React.ReactElement<any>;
 
           const baseClassName = `magic-bento-card ${enableBorderGlow ? 'magic-bento-card--border-glow' : ''} ${typedChild.props.className || ''}`;
@@ -525,7 +526,7 @@ const MagicBento = ({
             );
           }
 
-           return React.cloneElement(child, {
+           return React.cloneElement(typedChild, {
               className: baseClassName,
               style: cardStyle,
               ref: (el: HTMLDivElement | null) => {
@@ -635,7 +636,7 @@ const MagicBento = ({
                 el.addEventListener('mouseleave', handleMouseLeave);
                 el.addEventListener('click', handleClick);
               }
-           } as any);
+           });
         })}
       </BentoCardGrid>
     </>
