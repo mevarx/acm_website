@@ -18,6 +18,7 @@ import TestimonialCard from "@/components/ui/TestimonialCard";
 import JoinBanner from "@/components/ui/JoinBanner";
 import TextType from "@/components/ui/TextType";
 import HeroTerminal from "@/components/ui/HeroTerminal";
+import MagicBento from "@/components/ui/MagicBento";
 import { events } from "@/data/events";
 import { blogPosts } from "@/data/blog";
 import { testimonials } from "@/data/testimonials";
@@ -186,7 +187,12 @@ export default function HomePage() {
             </motion.div>
 
             {/* Domains Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+            <MagicBento
+              className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4"
+              enableStars={false}
+              enableTilt={true}
+              glowColor="21, 101, 192" // acm-blue
+            >
               {domains.map((domain, i) => (
                 <motion.div
                   key={domain.name}
@@ -194,12 +200,12 @@ export default function HomePage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.3, delay: i * 0.08 }}
-                  className="flex items-start gap-3 p-4 rounded-xl bg-surface border border-border hover:border-acm-blue/20 transition-colors"
+                  className="flex items-start gap-3 p-4 rounded-xl bg-surface border border-border hover:border-transparent transition-colors z-10"
                 >
                   <div className="w-10 h-10 rounded-lg bg-acm-blue/10 flex items-center justify-center text-acm-blue shrink-0">
                     <domain.icon size={20} />
                   </div>
-                  <div>
+                  <div className="z-10 relative">
                     <p className="text-sm font-bold text-dark-text">
                       {domain.name}
                     </p>
@@ -208,7 +214,7 @@ export default function HomePage() {
                   </div>
                 </motion.div>
               ))}
-            </div>
+            </MagicBento>
           </div>
         </div>
       </section>
