@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import SectionHeading from "@/components/ui/SectionHeading";
-import TeamCard from "@/components/ui/TeamCard";
+import ReflectiveCard, { FacultyReflectiveCard } from "@/components/ui/ReflectiveCard";
 import { teamMembers, facultySponsor } from "@/data/team";
 
 export const metadata: Metadata = {
@@ -28,7 +28,7 @@ export default function TeamPage() {
           {/* Tier 1 — Chair */}
           <div className="flex justify-center">
             {tier1.map((m, i) => (
-              <TeamCard key={m.name} member={m} index={i} featured />
+              <ReflectiveCard key={m.name} member={m} index={i} featured />
             ))}
           </div>
 
@@ -42,7 +42,7 @@ export default function TeamPage() {
           {/* Tier 2 — Vice Chair */}
           <div className="flex justify-center">
             {tier2.map((m, i) => (
-              <TeamCard key={m.name} member={m} index={i} featured />
+              <ReflectiveCard key={m.name} member={m} index={i} featured />
             ))}
           </div>
 
@@ -56,7 +56,7 @@ export default function TeamPage() {
           {/* Tier 3 — Secretariat */}
           <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
             {tier3.map((m, i) => (
-              <TeamCard key={m.name} member={m} index={i} />
+              <ReflectiveCard key={m.name} member={m} index={i} />
             ))}
           </div>
 
@@ -70,36 +70,17 @@ export default function TeamPage() {
           {/* Tier 4 — Operations */}
           <div className="flex justify-center">
             {tier4.map((m, i) => (
-              <TeamCard key={m.name} member={m} index={i} />
+              <ReflectiveCard key={m.name} member={m} index={i} />
             ))}
           </div>
 
           {/* Faculty Sponsor */}
           <div className="mt-16 pt-12 border-t border-border">
             <h3 className="text-center text-lg font-bold text-dark-text mb-8">
-              Faculty Sponsor
+              Faculty Advisor
             </h3>
             <div className="flex justify-center">
-              <div className="bg-white rounded-xl border border-border overflow-hidden max-w-sm w-full hover:shadow-lg hover:shadow-acm-blue/5 transition-all duration-300">
-                <div className="h-1.5 bg-gradient-to-r from-acm-yellow to-acm-yellow-dark" />
-                <div className="p-8 text-center">
-                  <div
-                    className="mx-auto w-24 h-24 rounded-full flex items-center justify-center text-white text-2xl font-bold mb-5"
-                    style={{ backgroundColor: facultySponsor.color }}
-                  >
-                    {facultySponsor.initials}
-                  </div>
-                  <h4 className="text-xl font-bold text-dark-text">
-                    {facultySponsor.name}
-                  </h4>
-                  <p className="text-acm-blue font-semibold text-sm mt-1">
-                    {facultySponsor.designation}
-                  </p>
-                  <p className="text-muted text-sm mt-2">
-                    {facultySponsor.department}
-                  </p>
-                </div>
-              </div>
+              <FacultyReflectiveCard sponsor={facultySponsor} />
             </div>
           </div>
         </div>
