@@ -14,14 +14,13 @@ import StatCounter from "@/components/ui/StatCounter";
 import SectionHeading from "@/components/ui/SectionHeading";
 import EventCard from "@/components/ui/EventCard";
 import BlogCard from "@/components/ui/BlogCard";
-import TestimonialCard from "@/components/ui/TestimonialCard";
 import JoinBanner from "@/components/ui/JoinBanner";
 import TextType from "@/components/ui/TextType";
 import HeroTerminal from "@/components/ui/HeroTerminal";
 import MagicBento from "@/components/ui/MagicBento";
+import CircularGallery from "@/components/ui/CircularGallery";
 import { events } from "@/data/events";
 import { blogPosts } from "@/data/blog";
-import { testimonials } from "@/data/testimonials";
 
 const stats = [
   { value: 100, suffix: "+", label: "Hackathons Won" },
@@ -61,6 +60,17 @@ const domains = [
     alias: "Events",
     desc: "Event logistics & management",
   },
+];
+
+const galleryItems = [
+  { image: '/pics/1.jpg', text: 'Our Community' },
+  { image: '/pics/2.jpg', text: 'Hackathon 2025' },
+  { image: '/pics/3.jpg', text: 'Workshop Series' },
+  { image: '/pics/4.jpg', text: 'Symposium' },
+  { image: '/pics/5.jpg', text: 'Team Building' },
+  { image: '/pics/6.jpg', text: 'IdeaForge' },
+  { image: '/pics/7.jpg', text: 'Industry Connect' },
+  { image: '/pics/8.jpg', text: 'Tech Talks' },
 ];
 
 export default function HomePage() {
@@ -285,20 +295,24 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ==================== TESTIMONIALS ==================== */}
+      {/* ==================== GALLERY ==================== */}
       <section className="bg-surface py-16 sm:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 sm:mb-12">
           <SectionHeading
-            title="What People Say"
-            subtitle="Hear from our faculty, alumni, and industry partners."
+            title="Life at ACM"
+            subtitle="Moments from our events, workshops, and community gatherings."
             center
           />
-
-          <div className="grid md:grid-cols-3 gap-6 mt-2">
-            {testimonials.map((t, i) => (
-              <TestimonialCard key={t.name} testimonial={t} index={i} />
-            ))}
-          </div>
+        </div>
+        <div style={{ height: '500px', position: 'relative' }}>
+          <CircularGallery
+            items={galleryItems}
+            bend={3}
+            textColor="#1565C0"
+            borderRadius={0.05}
+            scrollSpeed={2}
+            scrollEase={0.02}
+          />
         </div>
       </section>
 
