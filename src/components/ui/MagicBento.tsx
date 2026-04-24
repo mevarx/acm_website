@@ -313,6 +313,8 @@ const GlobalSpotlight = ({
     spotlight.className = 'global-spotlight';
     spotlight.style.cssText = `
       position: fixed;
+      left: 0;
+      top: 0;
       width: 800px;
       height: 800px;
       border-radius: 50%;
@@ -381,8 +383,8 @@ const GlobalSpotlight = ({
       });
 
       gsap.to(spotlightRef.current, {
-        left: e.clientX,
-        top: e.clientY,
+        x: e.clientX,
+        y: e.clientY,
         duration: 0.1,
         ease: 'power2.out'
       });

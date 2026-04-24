@@ -35,6 +35,11 @@ export default function GlobalClickSpark() {
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+      if (sparksRef.current.length === 0) {
+        rafRef.current = 0;
+        return;
+      }
+
       sparksRef.current = sparksRef.current.filter(spark => {
         const elapsed = timestamp - spark.startTime;
         if (elapsed >= DURATION) return false;
@@ -71,17 +76,23 @@ export default function GlobalClickSpark() {
         startTime: now,
       }));
       sparksRef.current.push(...newSparks);
+      if (!rafRef.current) {
+        rafRef.current = requestAnimationFrame(draw);
+      }
     };
 
     resize();
     window.addEventListener('resize', resize);
     window.addEventListener('click', handleClick);
+    // Don't start loop immediately unless needed, but it's empty so it will just stop on first frame
     rafRef.current = requestAnimationFrame(draw);
 
     return () => {
       window.removeEventListener('resize', resize);
       window.removeEventListener('click', handleClick);
-      cancelAnimationFrame(rafRef.current);
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
+      }
     };
   }, []); // runs once — all functions defined inside, no stale closure issues
 
