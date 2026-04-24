@@ -62,6 +62,7 @@ export default function Footer() {
                 alt="ACM Logo"
                 width={36}
                 height={36}
+                unoptimized
                 className="brightness-0 invert"
               />
               <div>
