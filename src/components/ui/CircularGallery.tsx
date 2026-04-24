@@ -276,7 +276,7 @@ class Media {
       transparent: true,
     });
     const img = new Image();
-    img.crossOrigin = 'anonymous';
+    // img.crossOrigin = 'anonymous'; // Removed to avoid CORS issues with local images
     img.src = this.image;
     img.onload = () => {
       texture.image = img;

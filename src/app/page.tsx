@@ -63,14 +63,14 @@ const domains = [
 ];
 
 const galleryItems = [
-  { image: '/pics/1.jpg', text: 'Our Community' },
-  { image: '/pics/2.jpg', text: 'Hackathon 2025' },
-  { image: '/pics/3.jpg', text: 'Workshop Series' },
-  { image: '/pics/4.jpg', text: 'Symposium' },
-  { image: '/pics/5.jpg', text: 'Team Building' },
-  { image: '/pics/6.jpg', text: 'IdeaForge' },
-  { image: '/pics/7.jpg', text: 'Industry Connect' },
-  { image: '/pics/8.jpg', text: 'Tech Talks' },
+  { image: '/1.jpg', text: 'Our Community' },
+  { image: '/2.jpg', text: 'Hackathon 2025' },
+  { image: '/3.jpg', text: 'Workshop Series' },
+  { image: '/4.jpg', text: 'Symposium' },
+  { image: '/5.jpg', text: 'Team Building' },
+  { image: '/6.jpg', text: 'IdeaForge' },
+  { image: '/7.jpg', text: 'Industry Connect' },
+  { image: '/8.jpg', text: 'Tech Talks' },
 ];
 
 export default function HomePage() {
