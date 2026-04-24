@@ -373,6 +373,8 @@ class App {
   mediasImages!: GalleryItem[];
   raf!: number;
   isDown!: boolean;
+  isVisible: boolean = true;
+  observer?: IntersectionObserver;
   start!: number;
   boundOnResize!: () => void;
   boundOnWheel!: (e: WheelEvent) => void;
@@ -413,6 +415,7 @@ class App {
     this.createMedias(items, bend, textColor, borderRadius, font);
     this.update();
     this.addEventListeners();
+    this.setupVisibilityObserver();
   }
 
   createRenderer() {
@@ -513,6 +516,7 @@ class App {
   }
 
   update() {
+    if (!this.isVisible) return;
     this.scroll.current = lerp(this.scroll.current, this.scroll.target, this.scroll.ease);
     const direction: 'left' | 'right' = this.scroll.current > this.scroll.last ? 'right' : 'left';
     if (this.medias) {
@@ -530,23 +534,40 @@ class App {
     this.boundOnTouchMove = this.onTouchMove.bind(this);
     this.boundOnTouchUp = this.onTouchUp.bind(this);
     window.addEventListener('resize', this.boundOnResize);
-    window.addEventListener('wheel', this.boundOnWheel);
-    window.addEventListener('mousedown', this.boundOnTouchDown as EventListener);
-    window.addEventListener('mousemove', this.boundOnTouchMove as EventListener);
+    // Scope wheel & drag-start to container — prevents stealing page scroll
+    this.container.addEventListener('wheel', this.boundOnWheel, { passive: true });
+    this.container.addEventListener('mousedown', this.boundOnTouchDown as EventListener);
+    this.container.addEventListener('touchstart', this.boundOnTouchDown as EventListener, { passive: true });
+    // Move/end stay on window so drag works if cursor leaves the container
+    window.addEventListener('mousemove', this.boundOnTouchMove as EventListener, { passive: true });
     window.addEventListener('mouseup', this.boundOnTouchUp);
-    window.addEventListener('touchstart', this.boundOnTouchDown as EventListener);
-    window.addEventListener('touchmove', this.boundOnTouchMove as EventListener);
+    window.addEventListener('touchmove', this.boundOnTouchMove as EventListener, { passive: true });
     window.addEventListener('touchend', this.boundOnTouchUp);
+  }
+
+  setupVisibilityObserver() {
+    this.observer = new IntersectionObserver(
+      (entries) => {
+        const wasVisible = this.isVisible;
+        this.isVisible = entries[0].isIntersecting;
+        if (this.isVisible && !wasVisible) {
+          this.raf = window.requestAnimationFrame(this.update.bind(this));
+        }
+      },
+      { threshold: 0.01 }
+    );
+    this.observer.observe(this.container);
   }
 
   destroy() {
     window.cancelAnimationFrame(this.raf);
+    this.observer?.disconnect();
     window.removeEventListener('resize', this.boundOnResize);
-    window.removeEventListener('wheel', this.boundOnWheel);
-    window.removeEventListener('mousedown', this.boundOnTouchDown as EventListener);
+    this.container.removeEventListener('wheel', this.boundOnWheel as EventListener);
+    this.container.removeEventListener('mousedown', this.boundOnTouchDown as EventListener);
+    this.container.removeEventListener('touchstart', this.boundOnTouchDown as EventListener);
     window.removeEventListener('mousemove', this.boundOnTouchMove as EventListener);
     window.removeEventListener('mouseup', this.boundOnTouchUp);
-    window.removeEventListener('touchstart', this.boundOnTouchDown as EventListener);
     window.removeEventListener('touchmove', this.boundOnTouchMove as EventListener);
     window.removeEventListener('touchend', this.boundOnTouchUp);
     if (this.renderer?.gl?.canvas?.parentNode) {
