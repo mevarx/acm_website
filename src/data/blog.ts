@@ -17,7 +17,7 @@ export const blogPosts: BlogPost[] = [
     slug: "future-of-web-development-2026",
     title: "The Future of Web Development in 2026: Trends Every Student Should Know",
     category: "Tech Insights",
-    author: "Arjun Mehta",
+    author: "Numair",
     date: "April 10, 2026",
     readTime: "8 min read",
     excerpt:
@@ -55,7 +55,7 @@ The best time to start building is now. Join our workshops and bootcamps to get 
     slug: "responsible-ai-symposium-recap",
     title: "Inside the Responsible AI Symposium: Key Moments and Takeaways",
     category: "Event Coverage",
-    author: "Kavya Nair",
+    author: "Santiago Jerald",
     date: "March 25, 2026",
     readTime: "6 min read",
     excerpt:
@@ -85,7 +85,7 @@ The success of this symposium has reinforced our commitment to responsible compu
     slug: "getting-started-with-nextjs",
     title: "Getting Started with Next.js: A Beginner's Guide to Modern React",
     category: "Tutorials",
-    author: "Rohit Sharma",
+    author: "Ram Teja",
     date: "March 15, 2026",
     readTime: "12 min read",
     excerpt:
@@ -149,7 +149,7 @@ Happy coding! Join our next Web Dev Bootcamp for hands-on mentorship.`,
     slug: "competitive-programming-roadmap",
     title: "The Complete Competitive Programming Roadmap for Beginners",
     category: "Tech Insights",
-    author: "Prateek Joshi",
+    author: "Dhruv Bajaj",
     date: "February 28, 2026",
     readTime: "10 min read",
     excerpt:
