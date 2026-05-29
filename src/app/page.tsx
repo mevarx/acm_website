@@ -102,7 +102,7 @@ export default function HomePage() {
                   typingSpeed={75}
                   deletingSpeed={40}
                   pauseDuration={2000}
-                  className="text-acm-blue"
+                  className="text-acm-blue min-w-[10.5ch] text-left"
                   cursorClassName="text-acm-blue"
                 />
                 <br />
