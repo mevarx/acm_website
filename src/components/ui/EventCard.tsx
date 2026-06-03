@@ -23,9 +23,8 @@ export default function EventCard({ event, index = 0, compact = false }: EventCa
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.4, delay: index * 0.1 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, delay: index * 0.08 }}
     >
       <BorderGlow borderRadius={12} animated={index === 0}>
         {/* Blue top accent */}

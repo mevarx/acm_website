@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
 import SectionHeading from "@/components/ui/SectionHeading";
 import EventCard from "@/components/ui/EventCard";
 import { events, type EventStatus } from "@/data/events";
@@ -48,22 +49,24 @@ export default function EventsPage() {
         </div>
 
         {/* Events Grid */}
-        {filteredEvents.length > 0 ? (
-          <div className="grid md:grid-cols-2 gap-6">
-            {filteredEvents.map((event, i) => (
-              <EventCard key={event.id} event={event} index={i} />
-            ))}
-          </div>
-        ) : (
-          <div className="text-center py-20">
-            <p className="text-muted text-lg">
-              No {activeTab} events at the moment.
-            </p>
-            <p className="text-sm text-muted mt-2">
-              Check back soon for updates!
-            </p>
-          </div>
-        )}
+        <AnimatePresence mode="wait">
+          {filteredEvents.length > 0 ? (
+            <div key={activeTab} className="grid md:grid-cols-2 gap-6">
+              {filteredEvents.map((event, i) => (
+                <EventCard key={event.id} event={event} index={i} />
+              ))}
+            </div>
+          ) : (
+            <div key={"empty-" + activeTab} className="text-center py-20">
+              <p className="text-muted text-lg">
+                No {activeTab} events at the moment.
+              </p>
+              <p className="text-sm text-muted mt-2">
+                Check back soon for updates!
+              </p>
+            </div>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );

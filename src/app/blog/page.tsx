@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
 import SectionHeading from "@/components/ui/SectionHeading";
 import BlogCard from "@/components/ui/BlogCard";
 import { blogPosts, type BlogCategory } from "@/data/blog";
@@ -43,19 +44,21 @@ export default function BlogPage() {
         </div>
 
         {/* Blog Grid */}
-        {filteredPosts.length > 0 ? (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredPosts.map((post, i) => (
-              <BlogCard key={post.slug} post={post} index={i} />
-            ))}
-          </div>
-        ) : (
-          <div className="text-center py-20">
-            <p className="text-muted text-lg">
-              No posts in this category yet.
-            </p>
-          </div>
-        )}
+        <AnimatePresence mode="wait">
+          {filteredPosts.length > 0 ? (
+            <div key={activeTab} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredPosts.map((post, i) => (
+                <BlogCard key={post.slug} post={post} index={i} />
+              ))}
+            </div>
+          ) : (
+            <div key={"empty-" + activeTab} className="text-center py-20">
+              <p className="text-muted text-lg">
+                No posts in this category yet.
+              </p>
+            </div>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );
