@@ -49,7 +49,6 @@ export default function Footer() {
                 width={36}
                 height={36}
                 unoptimized
-                className="brightness-0 invert"
               />
               <div>
                 <h3 className="text-lg font-bold">ACM Student Chapter</h3>
