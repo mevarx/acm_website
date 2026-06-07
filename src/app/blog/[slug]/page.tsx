@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowLeft, Clock, Calendar } from "lucide-react";
 import { blogPosts } from "@/data/blog";
 import type { Metadata } from "next";
+import { ArticleJsonLd, BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
@@ -25,6 +26,15 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       description: post.excerpt,
       type: "article",
       authors: [post.author],
+      publishedTime: post.date,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+    },
+    alternates: {
+      canonical: `/blog/${slug}/`,
     },
   };
 }
@@ -125,6 +135,20 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <div className="py-12 sm:py-16">
+      <ArticleJsonLd
+        title={post.title}
+        description={post.excerpt}
+        slug={post.slug}
+        author={post.author}
+        datePublished={post.date}
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Blog", href: "/blog/" },
+          { name: post.title, href: `/blog/${post.slug}/` },
+        ]}
+      />
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Back link */}
         <Link
@@ -177,3 +201,4 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     </div>
   );
 }
+

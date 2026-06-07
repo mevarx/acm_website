@@ -296,7 +296,7 @@ export default function HomePage() {
       </section>
 
       {/* ==================== GALLERY ==================== */}
-      <section className="bg-surface py-16 sm:py-20">
+      <section className="bg-surface py-16 sm:py-20" aria-label="Photo gallery of ACM SRM AP events and community">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 sm:mb-12">
           <SectionHeading
             title="Life at ACM"
@@ -314,6 +314,12 @@ export default function HomePage() {
             scrollEase={0.02}
           />
         </div>
+        {/* Accessible image descriptions for screen readers and crawlers */}
+        <ul className="sr-only" aria-label="Gallery image descriptions">
+          {galleryItems.map((item) => (
+            <li key={item.text}>{item.text} — ACM Student Chapter SRM University AP</li>
+          ))}
+        </ul>
       </section>
 
       {/* ==================== JOIN CTA ==================== */}

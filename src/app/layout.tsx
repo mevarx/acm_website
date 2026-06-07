@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import GlobalClickSpark from "@/components/ui/GlobalClickSpark";
+import { OrganizationJsonLd, WebSiteJsonLd } from "@/components/seo/JsonLd";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -12,6 +13,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://srmap.hosting.acm.org"),
   title: {
     default: "ACM Student Chapter — SRM University AP",
     template: "%s | ACM SRM AP",
@@ -26,6 +28,8 @@ export const metadata: Metadata = {
     "Technology",
     "Hackathons",
     "Workshops",
+    "SRM AP",
+    "ACM India",
   ],
   openGraph: {
     title: "ACM Student Chapter — SRM University AP",
@@ -33,16 +37,36 @@ export const metadata: Metadata = {
       "Accelerating innovation in computing — connecting students with cutting-edge technology and hands-on learning.",
     type: "website",
     locale: "en_IN",
+    siteName: "ACM Student Chapter — SRM University AP",
+    images: [
+      {
+        url: "/acm-logo.png",
+        width: 512,
+        height: 512,
+        alt: "ACM Student Chapter SRM University AP Logo",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "ACM Student Chapter — SRM University AP",
     description:
       "Accelerating innovation in computing — connecting students with cutting-edge technology and hands-on learning.",
+    images: ["/acm-logo.png"],
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  alternates: {
+    canonical: "/",
   },
 };
 
@@ -54,6 +78,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable} suppressHydrationWarning>
       <body className="min-h-screen flex flex-col overflow-x-hidden" suppressHydrationWarning>
+        <OrganizationJsonLd />
+        <WebSiteJsonLd />
         <GlobalClickSpark />
         <Navbar />
         <main className="flex-1 relative z-10 overflow-x-hidden w-full">{children}</main>

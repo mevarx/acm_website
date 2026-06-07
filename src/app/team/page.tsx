@@ -7,6 +7,21 @@ export const metadata: Metadata = {
   title: "Core Team",
   description:
     "Meet the leadership team of the ACM Student Chapter at SRM University AP — guiding the chapter's vision, operations, and community growth.",
+  openGraph: {
+    title: "Core Team — ACM SRM AP",
+    description:
+      "Meet the leadership driving the ACM Student Chapter at SRM University AP.",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Core Team — ACM SRM AP",
+    description:
+      "Meet the leadership driving the ACM Student Chapter at SRM University AP.",
+  },
+  alternates: {
+    canonical: "/team/",
+  },
 };
 
 export default function TeamPage() {
