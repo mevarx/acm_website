@@ -34,7 +34,7 @@ export default function Navbar() {
               className="w-9 h-9 sm:w-10 sm:h-10"
             />
             <div className="flex flex-col">
-              <span className="text-base sm:text-lg font-bold text-dark-text tracking-tight leading-tight">
+              <span className="font-display text-base sm:text-lg font-bold text-dark-text tracking-tight leading-tight">
                 ACM
               </span>
               <span className="text-[10px] sm:text-xs text-muted font-medium leading-tight">
@@ -51,7 +51,7 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`relative px-4 py-2 text-sm font-medium transition-colors duration-200 rounded-lg ${
+                  className={`font-display relative px-4 py-2 text-sm font-medium transition-colors duration-200 rounded-lg ${
                     isActive
                       ? "text-acm-blue"
                       : "text-muted hover:text-dark-text"

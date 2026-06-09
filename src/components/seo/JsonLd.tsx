@@ -1,5 +1,3 @@
-import type { ReactNode } from "react";
-
 // ---------- generic renderer ----------
 
 interface JsonLdProps {

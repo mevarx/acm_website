@@ -46,7 +46,7 @@ export default function EventCard({ event, index = 0, compact = false }: EventCa
         </div>
 
         {/* Title */}
-        <h3 className="text-lg font-bold text-dark-text mb-2 group-hover:text-acm-blue transition-colors leading-snug">
+        <h3 className="font-display text-lg font-bold text-dark-text mb-2 group-hover:text-acm-blue transition-colors leading-snug">
           {event.title}
         </h3>
 

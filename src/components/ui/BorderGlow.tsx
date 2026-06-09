@@ -118,16 +118,25 @@ const BorderGlow = ({
     return degrees;
   }, [getCenterOfElement]);
 
+  const rafRef = useRef<number | null>(null);
+  const lastEventRef = useRef<React.PointerEvent<HTMLDivElement> | null>(null);
+
   const handlePointerMove = useCallback((e: React.PointerEvent<HTMLDivElement>) => {
-    const card = cardRef.current;
-    if (!card) return;
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const edge = getEdgeProximity(card, x, y);
-    const angle = getCursorAngle(card, x, y);
-    card.style.setProperty('--edge-proximity', `${(edge * 100).toFixed(3)}`);
-    card.style.setProperty('--cursor-angle', `${angle.toFixed(3)}deg`);
+    lastEventRef.current = e;
+    if (rafRef.current !== null) return; // already queued
+    rafRef.current = requestAnimationFrame(() => {
+      rafRef.current = null;
+      const ev = lastEventRef.current;
+      const card = cardRef.current;
+      if (!card || !ev) return;
+      const rect = card.getBoundingClientRect();
+      const x = ev.clientX - rect.left;
+      const y = ev.clientY - rect.top;
+      const edge = getEdgeProximity(card, x, y);
+      const angle = getCursorAngle(card, x, y);
+      card.style.setProperty('--edge-proximity', `${(edge * 100).toFixed(3)}`);
+      card.style.setProperty('--cursor-angle', `${angle.toFixed(3)}deg`);
+    });
   }, [getEdgeProximity, getCursorAngle]);
 
   useEffect(() => {

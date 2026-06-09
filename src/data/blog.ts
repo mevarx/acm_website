@@ -10,6 +10,7 @@ export interface BlogPost {
   excerpt: string;
   content: string;
   coverColor: string;
+  image?: string;
 }
 
 export const blogPosts: BlogPost[] = [
@@ -50,6 +51,7 @@ Edge functions and edge databases have made it possible to deploy globally distr
 
 The best time to start building is now. Join our workshops and bootcamps to get hands-on experience with these technologies.`,
     coverColor: "#1565C0",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80",
   },
   {
     slug: "responsible-ai-symposium-recap",
@@ -80,6 +82,7 @@ The 6-hour mini-hackathon challenged teams to build responsible AI prototypes. T
 
 The success of this symposium has reinforced our commitment to responsible computing education. We're already planning follow-up workshops and a semester-long reading group on AI ethics.`,
     coverColor: "#FFC107",
+    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=800&q=80",
   },
   {
     slug: "getting-started-with-nextjs",
@@ -144,6 +147,7 @@ Once you're comfortable with the basics, explore:
 
 Happy coding! Join our next Web Dev Bootcamp for hands-on mentorship.`,
     coverColor: "#1E88E5",
+    image: "https://images.unsplash.com/photo-1618477247222-ac60c6285747?auto=format&fit=crop&w=800&q=80",
   },
   {
     slug: "competitive-programming-roadmap",
@@ -199,5 +203,6 @@ Push into contest-level problem solving:
 
 Our Foundry domain runs weekly CP sessions every Saturday. Drop by to practice with peers, discuss approaches, and learn from experienced competitive programmers.`,
     coverColor: "#0D47A1",
+    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80",
   },
 ];

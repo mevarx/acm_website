@@ -1,18 +1,20 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-acm-blue: #1565C0;
-  --color-acm-blue-dark: #0D47A1;
-  --color-acm-blue-light: #1E88E5;
-  --color-acm-yellow: #FFC107;
-  --color-acm-yellow-dark: #FFA000;
-  --color-surface: #F5F7FA;
-  --color-dark-text: #1A1A2E;
-  --color-muted: #6B7280;
-  --color-border: #E5E7EB;
-  --color-background: #ffffff;
-  --color-foreground: #1A1A2E;
+  --color-acm-blue: oklch(0.55 0.15 250);
+  --color-acm-blue-dark: oklch(0.45 0.15 250);
+  --color-acm-blue-light: oklch(0.65 0.15 250);
+  --color-acm-yellow: oklch(0.8 0.15 85);
+  --color-acm-yellow-dark: oklch(0.7 0.15 85);
+  --color-surface: oklch(0.98 0.005 250);
+  --color-surface-hover: oklch(0.96 0.005 250);
+  --color-dark-text: oklch(0.2 0.02 250);
+  --color-muted: oklch(0.5 0.02 250);
+  --color-border: oklch(0.9 0.01 250);
+  --color-background: oklch(0.99 0.003 250);
+  --color-foreground: oklch(0.2 0.02 250);
   --font-sans: var(--font-inter);
+  --font-display: var(--font-sora);
 }
 
 body {
@@ -54,4 +56,29 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #1565C080;
+}
+
+/* ── Performance: GPU compositing hints ─────────────────────── */
+
+/* Promote animated Framer Motion elements to their own layer */
+[data-framer-motion-layout-id],
+.border-glow-card,
+.magic-bento-card,
+.particle-container {
+  will-change: transform, opacity;
+}
+
+/* Once animations are done, release the will-change hint */
+.animation-done {
+  will-change: auto;
+}
+
+/* Prevent font smoothing from repainting on every scroll tick */
+* {
+  text-rendering: optimizeSpeed;
+}
+
+/* Passive scroll: mark known-scroll containers */
+section {
+  contain: layout style;
 }

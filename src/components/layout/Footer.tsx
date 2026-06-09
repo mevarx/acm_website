@@ -51,7 +51,7 @@ export default function Footer() {
                 unoptimized
               />
               <div>
-                <h3 className="text-lg font-bold">ACM Student Chapter</h3>
+                <h3 className="font-display text-lg font-bold">ACM Student Chapter</h3>
                 <p className="text-sm text-gray-400">SRM University AP</p>
               </div>
             </div>
@@ -64,7 +64,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-300 mb-4">
+            <h4 className="font-display text-sm font-semibold uppercase tracking-wider text-gray-300 mb-4">
               Quick Links
             </h4>
             <ul className="space-y-2.5">
@@ -83,7 +83,7 @@ export default function Footer() {
 
           {/* Connect */}
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-300 mb-4">
+            <h4 className="font-display text-sm font-semibold uppercase tracking-wider text-gray-300 mb-4">
               Connect With Us
             </h4>
             <div className="flex gap-3 mb-6">

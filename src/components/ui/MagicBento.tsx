@@ -533,38 +533,44 @@ const MagicBento = ({
               ref: (el: HTMLDivElement | null) => {
                 if (!el) return;
 
-                const handleMouseMove = (e: MouseEvent) => {
-                  if (shouldDisableAnimations) return;
+                const handleMouseMove = (() => {
+                  let rafId: number | null = null;
+                  return (e: MouseEvent) => {
+                    if (shouldDisableAnimations) return;
+                    if (rafId !== null) return; // already scheduled
+                    rafId = requestAnimationFrame(() => {
+                      rafId = null;
+                      const rect = el.getBoundingClientRect();
+                      const x = e.clientX - rect.left;
+                      const y = e.clientY - rect.top;
+                      const centerX = rect.width / 2;
+                      const centerY = rect.height / 2;
 
-                  const rect = el.getBoundingClientRect();
-                  const x = e.clientX - rect.left;
-                  const y = e.clientY - rect.top;
-                  const centerX = rect.width / 2;
-                  const centerY = rect.height / 2;
+                      if (enableTilt) {
+                        const rotateX = ((y - centerY) / centerY) * -10;
+                        const rotateY = ((x - centerX) / centerX) * 10;
+                        gsap.to(el, {
+                          rotateX,
+                          rotateY,
+                          duration: 0.1,
+                          ease: 'power2.out',
+                          transformPerspective: 1000
+                        });
+                      }
 
-                  if (enableTilt) {
-                    const rotateX = ((y - centerY) / centerY) * -10;
-                    const rotateY = ((x - centerX) / centerX) * 10;
-                    gsap.to(el, {
-                      rotateX,
-                      rotateY,
-                      duration: 0.1,
-                      ease: 'power2.out',
-                      transformPerspective: 1000
+                      if (enableMagnetism) {
+                        const magnetX = (x - centerX) * 0.05;
+                        const magnetY = (y - centerY) * 0.05;
+                        gsap.to(el, {
+                          x: magnetX,
+                          y: magnetY,
+                          duration: 0.3,
+                          ease: 'power2.out'
+                        });
+                      }
                     });
-                  }
-
-                  if (enableMagnetism) {
-                    const magnetX = (x - centerX) * 0.05;
-                    const magnetY = (y - centerY) * 0.05;
-                    gsap.to(el, {
-                      x: magnetX,
-                      y: magnetY,
-                      duration: 0.3,
-                      ease: 'power2.out'
-                    });
-                  }
-                };
+                  };
+                })();
 
                 const handleMouseLeave = () => {
                   if (shouldDisableAnimations) return;

@@ -10,7 +10,6 @@ import {
   Palette,
   CalendarCheck,
 } from "lucide-react";
-import StatCounter from "@/components/ui/StatCounter";
 import SectionHeading from "@/components/ui/SectionHeading";
 import EventCard from "@/components/ui/EventCard";
 import BlogCard from "@/components/ui/BlogCard";
@@ -22,12 +21,6 @@ import CircularGallery from "@/components/ui/CircularGallery";
 import { events } from "@/data/events";
 import { blogPosts } from "@/data/blog";
 
-const stats = [
-  { value: 100, suffix: "+", label: "Hackathons Won" },
-  { value: 500, suffix: "+", label: "Active Members" },
-  { value: 20, suffix: "+", label: "Events Conducted" },
-  { value: 10, suffix: "+", label: "Industry Partners" },
-];
 
 const domains = [
   {
@@ -84,17 +77,17 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 lg:py-36">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="flex-1 text-center lg:text-left"
+            className="flex-1 text-center lg:text-left"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
             >
               <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-acm-blue/5 text-acm-blue text-sm font-medium rounded-full mb-6 border border-acm-blue/10">
                 <span className="w-2 h-2 rounded-full bg-acm-yellow" />
                 ACM Student Chapter
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-dark-text tracking-tight leading-[1.1] min-h-[3em]">
+              <h1 className="font-display text-4xl sm:text-5xl lg:text-7xl font-extrabold text-dark-text tracking-tight leading-[1.05] min-h-[3em]">
                 Accelerating{" "}
                 <TextType
                   as="span"
@@ -132,10 +125,10 @@ export default function HomePage() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: 0.3 }}
               className="flex-shrink-0 w-full lg:w-auto"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
             >
               <HeroTerminal />
             </motion.div>
@@ -146,19 +139,23 @@ export default function HomePage() {
         <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-acm-blue/[0.02] to-transparent pointer-events-none" />
       </section>
 
-      {/* ==================== STATS BAR ==================== */}
+      {/* ==================== TRUST SIGNALS ==================== */}
       <section className="bg-surface border-y border-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-            {stats.map((stat, i) => (
-              <StatCounter
-                key={stat.label}
-                value={stat.value}
-                suffix={stat.suffix}
-                label={stat.label}
-                index={i}
-              />
-            ))}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 flex flex-col md:flex-row items-center justify-between gap-8 text-muted">
+          <div className="flex items-center gap-4">
+            <span className="font-display font-semibold text-dark-text text-xl">ACM</span>
+            <span className="h-8 w-px bg-border"></span>
+            <span className="text-sm font-medium">Official Student Chapter</span>
+          </div>
+          <div className="flex items-center gap-4">
+            <span className="font-display font-semibold text-dark-text text-xl">SRM AP</span>
+            <span className="h-8 w-px bg-border"></span>
+            <span className="text-sm font-medium">University Affiliated</span>
+          </div>
+          <div className="flex items-center gap-4">
+            <span className="font-display font-semibold text-dark-text text-xl">Est. 2025</span>
+            <span className="h-8 w-px bg-border"></span>
+            <span className="text-sm font-medium">A Legacy of Excellence</span>
           </div>
         </div>
       </section>
@@ -173,15 +170,15 @@ export default function HomePage() {
 
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
+              initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
             >
               <p className="text-muted leading-relaxed text-base sm:text-lg">
                 The ACM Student Chapter at SRM University AP is the official
                 collegiate chapter affiliated with the{" "}
-                <strong className="text-dark-text">
+                <strong className="text-dark-text font-semibold">
                   Association for Computing Machinery (ACM)
                 </strong>
                 , the world&apos;s largest computing society. Our mission is to
@@ -206,17 +203,17 @@ export default function HomePage() {
               {domains.map((domain, i) => (
                 <motion.div
                   key={domain.name}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: i * 0.08 }}
+                  transition={{ duration: 0.3, delay: i * 0.05 }}
                   className="flex items-start gap-3 p-4 rounded-xl bg-surface border border-border hover:border-transparent transition-colors z-10"
                 >
                   <div className="w-10 h-10 rounded-lg bg-acm-blue/10 flex items-center justify-center text-acm-blue shrink-0">
                     <domain.icon size={20} />
                   </div>
                   <div className="z-10 relative">
-                    <p className="text-sm font-bold text-dark-text">
+                    <p className="font-display text-sm font-bold text-dark-text">
                       {domain.name}
                     </p>
                     <p className="text-xs text-muted">{domain.alias}</p>

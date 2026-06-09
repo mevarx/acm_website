@@ -1,8 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Clock, ArrowRight } from "lucide-react";
+import { Clock, ArrowRight, Image as ImageIcon } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import type { BlogPost } from "@/data/blog";
 import BorderGlow from "@/components/ui/BorderGlow";
 
@@ -31,17 +32,27 @@ export default function BlogCard({ post, index = 0 }: BlogCardProps) {
           href={`/blog/${post.slug}`}
           className="block group h-full"
         >
-        {/* Cover color band */}
+        {/* Cover image or color band */}
         <div
-          className="h-36 sm:h-40 flex items-center justify-center"
-          style={{ backgroundColor: post.coverColor + "12" }}
+          className="h-40 sm:h-48 w-full relative bg-surface overflow-hidden"
         >
-          <div
-            className="w-16 h-16 rounded-2xl flex items-center justify-center text-white text-2xl font-bold"
-            style={{ backgroundColor: post.coverColor }}
-          >
-            {post.title.charAt(0)}
-          </div>
+          {post.image ? (
+            <Image
+              src={post.image}
+              alt={post.title}
+              fill
+              unoptimized
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+          ) : (
+            <div
+              className="absolute inset-0 flex items-center justify-center opacity-20"
+              style={{ backgroundColor: post.coverColor }}
+            >
+              <ImageIcon size={48} className="text-dark-text" />
+            </div>
+          )}
         </div>
 
         <div className="p-5 sm:p-6">
@@ -59,7 +70,7 @@ export default function BlogCard({ post, index = 0 }: BlogCardProps) {
           </div>
 
           {/* Title */}
-          <h3 className="text-base sm:text-lg font-bold text-dark-text mb-2 group-hover:text-acm-blue transition-colors leading-snug line-clamp-2">
+          <h3 className="font-display text-base sm:text-lg font-bold text-dark-text mb-2 group-hover:text-acm-blue transition-colors leading-snug line-clamp-2">
             {post.title}
           </h3>
 

@@ -43,5 +43,22 @@ export const events: Event[] = [
     ],
     registrationLink: "https://www.explara.com/e/rocs-at-srm-university-amaravati",
     recapLink: "https://events.srmap.edu.in/event/acm-india-research-opportunities-in-computer-science/",
+    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    id: "acm-dev-bootcamp",
+    title: "Full Stack Development Bootcamp",
+    date: "July 2026",
+    venue: "Lab 3, SRM University AP",
+    mode: "On-Campus",
+    status: "upcoming",
+    description: "A comprehensive 4-week bootcamp covering modern web development frameworks like Next.js, React, and Tailwind CSS. Join us to build real-world projects and accelerate your web development journey.",
+    speakers: [],
+    keyTakeaways: [
+      "Master React and Next.js",
+      "Build full-stack applications",
+      "Learn modern CSS with Tailwind"
+    ],
+    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80",
   },
 ];

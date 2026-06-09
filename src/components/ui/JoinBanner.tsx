@@ -19,14 +19,14 @@ export default function JoinBanner({
 }: JoinBannerProps) {
   return (
     <motion.section
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-30px" }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.4 }}
       className="bg-acm-blue"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 text-center">
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight max-w-3xl mx-auto leading-snug">
+        <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight max-w-3xl mx-auto leading-snug">
           {title}
         </h2>
         {subtitle && (

@@ -15,17 +15,17 @@ export default function SectionHeading({
 }: SectionHeadingProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.4 }}
       className={`mb-10 sm:mb-12 ${center ? "text-center" : ""}`}
     >
-      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-text tracking-tight">
+      <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-text tracking-tight">
         {title}
       </h2>
       {subtitle && (
-        <p className="mt-3 text-base sm:text-lg text-muted max-w-2xl leading-relaxed">
+        <p className={`mt-3 text-base sm:text-lg text-muted max-w-2xl leading-relaxed ${center ? "mx-auto text-center" : ""}`}>
           {subtitle}
         </p>
       )}
