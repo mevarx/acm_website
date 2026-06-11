@@ -118,7 +118,7 @@ export default function HomePage() {
             </motion.div>
 
             <motion.div
-              className="flex-shrink-0 w-full lg:w-auto"
+              className="shrink-0 w-full lg:w-auto"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
@@ -129,7 +129,7 @@ export default function HomePage() {
         </div>
 
         {/* Subtle background accent */}
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-acm-blue/[0.02] to-transparent pointer-events-none" />
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-linear-to-l from-acm-blue/2 to-transparent pointer-events-none" />
       </section>
 
       {/* ==================== ABOUT ==================== */}

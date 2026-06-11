@@ -56,7 +56,7 @@ export const ImageAutoSlider: React.FC = () => {
           {duplicatedImages.map((src, index) => (
             <div
               key={index}
-              className="acm-image-item flex-shrink-0 w-52 h-52 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-2xl overflow-hidden shadow-xl"
+              className="acm-image-item shrink-0 w-52 h-52 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-2xl overflow-hidden shadow-xl"
             >
               <img
                 src={src}

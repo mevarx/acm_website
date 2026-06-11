@@ -30,7 +30,7 @@ export default function TeamCard({ member, index = 0, featured = false }: TeamCa
     >
       <BorderGlow borderRadius={12} animated={featured}>
       {/* Blue top border accent */}
-      <div className="h-1.5 bg-gradient-to-r from-acm-blue to-acm-blue-light" />
+      <div className="h-1.5 bg-linear-to-r from-acm-blue to-acm-blue-light" />
 
       <div className={`${featured ? "p-8" : "p-6"} text-center`}>
         {/* Avatar */}

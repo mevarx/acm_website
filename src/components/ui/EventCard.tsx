@@ -28,7 +28,7 @@ export default function EventCard({ event, index = 0, compact = false }: EventCa
     >
       <BorderGlow borderRadius={12} animated={index === 0}>
         {/* Blue top accent */}
-        <div className="h-1 bg-gradient-to-r from-acm-blue to-acm-blue-light" />
+        <div className="h-1 bg-linear-to-r from-acm-blue to-acm-blue-light" />
 
         <div className="p-5 sm:p-6">
         {/* Status + Date row */}
