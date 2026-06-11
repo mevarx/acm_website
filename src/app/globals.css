@@ -71,12 +71,11 @@ html {
   will-change: auto;
 }
 
-/* Prevent font smoothing from repainting on every scroll tick */
-* {
+/* Optimise rendering: speed for body copy, legibility for headings */
+body, p, li, span {
   text-rendering: optimizeSpeed;
 }
 
-/* Passive scroll: mark known-scroll containers */
-section {
-  contain: layout style;
+h1, h2, h3, h4, h5, h6 {
+  text-rendering: optimizeLegibility;
 }

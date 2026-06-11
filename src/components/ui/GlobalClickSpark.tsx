@@ -19,6 +19,8 @@ export default function GlobalClickSpark() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const sparksRef = useRef<Spark[]>([]);
   const rafRef    = useRef<number>(0);
+  // Cache the 2D context so it isn't re-fetched on every animation frame
+  const ctxRef    = useRef<CanvasRenderingContext2D | null>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -27,10 +29,12 @@ export default function GlobalClickSpark() {
     const resize = () => {
       canvas.width  = window.innerWidth;
       canvas.height = window.innerHeight;
+      // Re-acquire context after resize (canvas reset clears it)
+      ctxRef.current = canvas.getContext('2d');
     };
 
     const draw = (timestamp: number) => {
-      const ctx = canvas.getContext('2d');
+      const ctx = ctxRef.current;
       if (!ctx) return;
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -76,6 +80,7 @@ export default function GlobalClickSpark() {
         startTime: now,
       }));
       sparksRef.current.push(...newSparks);
+      // Only start the RAF loop if it isn't already running
       if (!rafRef.current) {
         rafRef.current = requestAnimationFrame(draw);
       }
@@ -84,8 +89,7 @@ export default function GlobalClickSpark() {
     resize();
     window.addEventListener('resize', resize);
     window.addEventListener('click', handleClick);
-    // Don't start loop immediately unless needed, but it's empty so it will just stop on first frame
-    rafRef.current = requestAnimationFrame(draw);
+    // Do NOT start the draw loop eagerly — wait for the first click
 
     return () => {
       window.removeEventListener('resize', resize);

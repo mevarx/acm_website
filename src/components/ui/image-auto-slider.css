@@ -1,0 +1,23 @@
+@keyframes acm-scroll-right {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.acm-infinite-scroll {
+  animation: acm-scroll-right 28s linear infinite;
+}
+
+.acm-scroll-container {
+  mask: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
+  -webkit-mask: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+
+.acm-image-item {
+  transition: transform 0.35s ease, filter 0.35s ease, box-shadow 0.35s ease;
+}
+
+.acm-image-item:hover {
+  transform: scale(1.06);
+  filter: brightness(1.08);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}

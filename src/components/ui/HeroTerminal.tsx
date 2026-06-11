@@ -83,8 +83,8 @@ export default function HeroTerminal() {
   }, [lineIdx, charIdx]);
 
   return (
-    /* Fixed 420px width — never grows or shrinks */
-    <div style={{ width: '420px', flexShrink: 0 }} className="font-mono text-sm select-none pointer-events-none">
+    /* Fixed 420px width — shrinks on narrow viewports */
+    <div style={{ width: '420px', maxWidth: '100%', flexShrink: 0 }} className="font-mono text-sm select-none pointer-events-none">
       <div className="bg-white rounded-2xl overflow-hidden border border-border shadow-xl shadow-acm-blue/8 flex flex-col">
 
         {/* Title bar — fixed height */}

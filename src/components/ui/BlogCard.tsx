@@ -24,7 +24,8 @@ export default function BlogCard({ post, index = 0 }: BlogCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
-      animate={{ opacity: 1, y: 0 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.08 }}
     >
       <BorderGlow borderRadius={12}>
