@@ -62,9 +62,7 @@ html {
 
 /* Promote animated Framer Motion elements to their own layer */
 [data-framer-motion-layout-id],
-.border-glow-card,
-.magic-bento-card,
-.particle-container {
+.border-glow-card {
   will-change: transform, opacity;
 }
 

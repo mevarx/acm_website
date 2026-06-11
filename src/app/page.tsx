@@ -16,7 +16,6 @@ import BlogCard from "@/components/ui/BlogCard";
 import JoinBanner from "@/components/ui/JoinBanner";
 import TextType from "@/components/ui/TextType";
 import HeroTerminal from "@/components/ui/HeroTerminal";
-import MagicBento from "@/components/ui/MagicBento";
 import ImageAutoSlider from "@/components/ui/image-auto-slider";
 import { events } from "@/data/events";
 import { blogPosts } from "@/data/blog";
@@ -167,12 +166,7 @@ export default function HomePage() {
             </motion.div>
 
             {/* Domains Grid */}
-            <MagicBento
-              className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4"
-              enableStars={false}
-              enableTilt={true}
-              glowColor="21, 101, 192" // acm-blue
-            >
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               {domains.map((domain, i) => (
                 <motion.div
                   key={domain.name}
@@ -180,7 +174,7 @@ export default function HomePage() {
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.3, delay: i * 0.05 }}
-                  className="flex items-start gap-3 p-4 rounded-xl bg-surface border border-border hover:border-transparent transition-colors z-10"
+                  className="flex items-start gap-3 p-4 rounded-xl bg-surface border border-border hover:bg-surface-hover transition-colors z-10"
                 >
                   <div className="w-10 h-10 rounded-lg bg-acm-blue/10 flex items-center justify-center text-acm-blue shrink-0">
                     <domain.icon size={20} />
@@ -194,7 +188,7 @@ export default function HomePage() {
                   </div>
                 </motion.div>
               ))}
-            </MagicBento>
+            </div>
           </div>
         </div>
       </section>
