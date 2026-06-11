@@ -35,12 +35,20 @@ export default function TeamCard({ member, index = 0, featured = false }: TeamCa
       <div className={`${featured ? "p-8" : "p-6"} text-center`}>
         {/* Avatar */}
         <div
-          className={`mx-auto rounded-full flex items-center justify-center text-white font-bold ${
+          className={`mx-auto rounded-full flex items-center justify-center text-white font-bold overflow-hidden ${
             featured ? "w-24 h-24 text-2xl mb-5" : "w-20 h-20 text-xl mb-4"
           }`}
-          style={{ backgroundColor: member.color }}
+          style={member.image ? {} : { backgroundColor: member.color }}
         >
-          {member.initials}
+          {member.image ? (
+            <img
+              src={member.image}
+              alt={member.name}
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
+          ) : (
+            member.initials
+          )}
         </div>
 
         {/* Name */}

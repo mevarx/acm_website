@@ -6,6 +6,7 @@ export interface TeamMember {
   linkedin: string;
   initials: string;
   color: string;
+  image?: string;
 }
 
 export interface FacultySponsor {
@@ -14,6 +15,7 @@ export interface FacultySponsor {
   department: string;
   initials: string;
   color: string;
+  image?: string;
 }
 
 export const teamMembers: TeamMember[] = [
@@ -25,6 +27,7 @@ export const teamMembers: TeamMember[] = [
     linkedin: "https://linkedin.com",
     initials: "N",
     color: "#1565C0",
+    image: "/Numair.jpg",
   },
   {
     name: "Santiago Jerald",
@@ -34,6 +37,7 @@ export const teamMembers: TeamMember[] = [
     linkedin: "https://linkedin.com",
     initials: "SJ",
     color: "#1E88E5",
+    image: "/santiago.jpeg",
   },
   {
     name: "Ram Teja",
@@ -61,6 +65,7 @@ export const teamMembers: TeamMember[] = [
     linkedin: "https://linkedin.com",
     initials: "DB",
     color: "#1976D2",
+    image: "/Dhruv bajaj.jpeg",
   },
 ];
 
@@ -70,4 +75,5 @@ export const facultySponsor: FacultySponsor = {
   department: "Department of Computer Science & Engineering",
   initials: "PS",
   color: "#0D47A1",
+  image: "/Priyanka.jpg",
 };

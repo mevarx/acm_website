@@ -123,9 +123,21 @@ const ReflectiveCard = ({
           <div className="card-body">
             <div
               className="member-avatar"
-              style={{ background: `linear-gradient(135deg, ${member.color} 0%, #FEBC2E 100%)` }}
+              style={
+                member.image
+                  ? { boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3), 0 0 0 2px rgba(255, 255, 255, 0.15)', overflow: 'hidden' }
+                  : { background: `linear-gradient(135deg, ${member.color} 0%, #FEBC2E 100%)` }
+              }
             >
-              {member.initials}
+              {member.image ? (
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+              ) : (
+                member.initials
+              )}
             </div>
             <div className="user-info">
               <h2 className="user-name">{member.name.toUpperCase()}</h2>
@@ -218,9 +230,21 @@ export function FacultyReflectiveCard({
           <div className="card-body">
             <div
               className="member-avatar"
-              style={{ background: `linear-gradient(135deg, ${sponsor.color} 0%, #FEBC2E 100%)` }}
+              style={
+                sponsor.image
+                  ? { boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3), 0 0 0 2px rgba(255, 255, 255, 0.15)', overflow: 'hidden' }
+                  : { background: `linear-gradient(135deg, ${sponsor.color} 0%, #FEBC2E 100%)` }
+              }
             >
-              {sponsor.initials}
+              {sponsor.image ? (
+                <img
+                  src={sponsor.image}
+                  alt={sponsor.name}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+              ) : (
+                sponsor.initials
+              )}
             </div>
             <div className="user-info">
               <h2 className="user-name">{sponsor.name.toUpperCase()}</h2>
