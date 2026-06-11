@@ -17,7 +17,7 @@ import JoinBanner from "@/components/ui/JoinBanner";
 import TextType from "@/components/ui/TextType";
 import HeroTerminal from "@/components/ui/HeroTerminal";
 import MagicBento from "@/components/ui/MagicBento";
-import CircularGallery from "@/components/ui/CircularGallery";
+import ImageAutoSlider from "@/components/ui/image-auto-slider";
 import { events } from "@/data/events";
 import { blogPosts } from "@/data/blog";
 
@@ -55,15 +55,9 @@ const domains = [
   },
 ];
 
-const galleryItems = [
-  { image: '/1.jpg', text: 'Our Community' },
-  { image: '/2.jpg', text: 'Hackathon 2025' },
-  { image: '/3.jpg', text: 'Workshop Series' },
-  { image: '/4.jpg', text: 'Symposium' },
-  { image: '/5.jpg', text: 'Team Building' },
-  { image: '/6.jpg', text: 'IdeaForge' },
-  { image: '/7.jpg', text: 'Industry Connect' },
-  { image: '/8.jpg', text: 'Tech Talks' },
+const galleryAltLabels = [
+  'Our Community', 'Hackathon 2025', 'Workshop Series', 'Symposium',
+  'Team Building', 'IdeaForge', 'Industry Connect', 'Tech Talks',
 ];
 
 export default function HomePage() {
@@ -137,27 +131,6 @@ export default function HomePage() {
 
         {/* Subtle background accent */}
         <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-acm-blue/[0.02] to-transparent pointer-events-none" />
-      </section>
-
-      {/* ==================== TRUST SIGNALS ==================== */}
-      <section className="bg-surface border-y border-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 flex flex-col md:flex-row items-center justify-between gap-8 text-muted">
-          <div className="flex items-center gap-4">
-            <span className="font-display font-semibold text-dark-text text-xl">ACM</span>
-            <span className="h-8 w-px bg-border"></span>
-            <span className="text-sm font-medium">Official Student Chapter</span>
-          </div>
-          <div className="flex items-center gap-4">
-            <span className="font-display font-semibold text-dark-text text-xl">SRM AP</span>
-            <span className="h-8 w-px bg-border"></span>
-            <span className="text-sm font-medium">University Affiliated</span>
-          </div>
-          <div className="flex items-center gap-4">
-            <span className="font-display font-semibold text-dark-text text-xl">Est. 2025</span>
-            <span className="h-8 w-px bg-border"></span>
-            <span className="text-sm font-medium">A Legacy of Excellence</span>
-          </div>
-        </div>
       </section>
 
       {/* ==================== ABOUT ==================== */}
@@ -301,20 +274,11 @@ export default function HomePage() {
             center
           />
         </div>
-        <div style={{ height: '500px', position: 'relative' }}>
-          <CircularGallery
-            items={galleryItems}
-            bend={3}
-            textColor="#1565C0"
-            borderRadius={0.05}
-            scrollSpeed={2}
-            scrollEase={0.02}
-          />
-        </div>
+        <ImageAutoSlider />
         {/* Accessible image descriptions for screen readers and crawlers */}
         <ul className="sr-only" aria-label="Gallery image descriptions">
-          {galleryItems.map((item) => (
-            <li key={item.text}>{item.text} — ACM Student Chapter SRM University AP</li>
+          {galleryAltLabels.map((label) => (
+            <li key={label}>{label} — ACM Student Chapter SRM University AP</li>
           ))}
         </ul>
       </section>
