@@ -47,6 +47,7 @@ export const teamMembers: TeamMember[] = [
     linkedin: "https://linkedin.com",
     initials: "RT",
     color: "#2196F3",
+    image: "/Ram Teja.jpeg",
   },
   {
     name: "Shammy",
