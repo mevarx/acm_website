@@ -34,7 +34,7 @@ export function OrganizationJsonLd() {
         ],
         contactPoint: {
           "@type": "ContactPoint",
-          email: "acm.core@srmap.edu.in",
+          email: "acm@srmap.edu.in",
           contactType: "General Inquiry",
         },
         parentOrganization: {

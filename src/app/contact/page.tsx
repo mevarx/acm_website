@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, MapPin, Send, CheckCircle } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
-import { LinkedinIcon, InstagramIcon, GithubIcon, TwitterIcon } from "@/components/ui/icons";
+import { LinkedinIcon, InstagramIcon } from "@/components/ui/icons";
 
 const socialLinks = [
   {
@@ -16,16 +16,6 @@ const socialLinks = [
     href: "https://www.instagram.com/acmsrmap.studentchapter",
     icon: InstagramIcon,
     label: "Instagram",
-  },
-  {
-    href: "https://github.com/mevarx",
-    icon: GithubIcon,
-    label: "GitHub",
-  },
-  {
-    href: "https://twitter.com/acmsrmap",
-    icon: TwitterIcon,
-    label: "Twitter/X",
   },
 ];
 
