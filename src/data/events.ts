@@ -43,7 +43,7 @@ export const events: Event[] = [
     ],
     registrationLink: "https://www.explara.com/e/rocs-at-srm-university-amaravati",
     recapLink: "https://events.srmap.edu.in/event/acm-india-research-opportunities-in-computer-science/",
-    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80",
+    image: "/5.jpg",
   },
   {
     id: "acm-dev-bootcamp",
@@ -59,6 +59,6 @@ export const events: Event[] = [
       "Build full-stack applications",
       "Learn modern CSS with Tailwind"
     ],
-    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80",
+    image: "/6.jpg",
   },
 ];
