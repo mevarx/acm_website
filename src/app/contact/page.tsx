@@ -48,10 +48,10 @@ export default function ContactPage() {
                 <div>
                   <p className="text-sm font-semibold text-dark-text">Email</p>
                   <a
-                    href="mailto:acm@srmap.edu.in"
+                    href="mailto:acm.core@srmap.edu.in"
                     className="text-sm text-acm-blue hover:underline"
                   >
-                    acm@srmap.edu.in
+                    acm.core@srmap.edu.in
                   </a>
                 </div>
               </div>

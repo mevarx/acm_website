@@ -15,7 +15,7 @@ const footerLinks = [
 const socialLinks = [
   { href: "https://www.linkedin.com/company/srm-ap-acm", icon: LinkedinIcon, label: "LinkedIn" },
   { href: "https://www.instagram.com/acmsrmap.studentchapter", icon: InstagramIcon, label: "Instagram" },
-  { href: "mailto:acm@srmap.edu.in", icon: Mail, label: "Email" },
+  { href: "mailto:acm.core@srmap.edu.in", icon: Mail, label: "Email" },
 ];
 
 export default function Footer() {
@@ -85,7 +85,7 @@ export default function Footer() {
               ))}
             </div>
             <p className="text-sm text-gray-400">
-              acm@srmap.edu.in
+              acm.core@srmap.edu.in
             </p>
             <p className="text-sm text-gray-400 mt-1">
               SRM University AP, Neerukonda, Andhra Pradesh
