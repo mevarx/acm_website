@@ -27,7 +27,7 @@ export const teamMembers: TeamMember[] = [
     linkedin: "https://linkedin.com",
     initials: "N",
     color: "#1565C0",
-    image: "/Numair.jpg",
+    image: "/numair 2.jpeg",
   },
   {
     name: "Santiago Jerald",
@@ -57,6 +57,7 @@ export const teamMembers: TeamMember[] = [
     linkedin: "https://linkedin.com",
     initials: "S",
     color: "#42A5F5",
+    image: "/shammy.jpeg",
   },
   {
     name: "Dhruv Bajaj",
@@ -78,3 +79,27 @@ export const facultySponsor: FacultySponsor = {
   color: "#0D47A1",
   image: "/Priyanka.jpg",
 };
+
+export const advisors: TeamMember[] = [
+  {
+    name: "Vishnu",
+    role: "Advisory Board",
+    tier: 5,
+    bio: "Advising the chapter on strategic growth and opportunities.",
+    linkedin: "https://linkedin.com",
+    initials: "V",
+    color: "#475569",
+    image: "/vishnu.jpeg",
+  },
+  {
+    name: "Naman Pant",
+    role: "Advisory Board",
+    tier: 5,
+    bio: "Advising the chapter on academic and industry integration.",
+    linkedin: "https://linkedin.com",
+    initials: "NP",
+    color: "#64748B",
+    image: "/naman pant.jpeg",
+  },
+];
+

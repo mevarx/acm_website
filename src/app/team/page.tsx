@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ReflectiveCard, { FacultyReflectiveCard } from "@/components/ui/ReflectiveCard";
-import { teamMembers, facultySponsor } from "@/data/team";
+import { teamMembers, facultySponsor, advisors } from "@/data/team";
 
 export const metadata: Metadata = {
   title: "Core Team",
@@ -96,6 +96,18 @@ export default function TeamPage() {
             </h3>
             <div className="flex justify-center">
               <FacultyReflectiveCard sponsor={facultySponsor} />
+            </div>
+          </div>
+
+          {/* Advisors */}
+          <div className="mt-16 pt-12 border-t border-border">
+            <h3 className="text-center text-lg font-bold text-dark-text mb-8">
+              Advisors
+            </h3>
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
+              {advisors.map((m, i) => (
+                <ReflectiveCard key={m.name} member={m} index={i} />
+              ))}
             </div>
           </div>
         </div>
